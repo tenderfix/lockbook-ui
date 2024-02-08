@@ -1,0 +1,234 @@
+{
+  "register": {
+    "activation": {
+      "title": "Dein Konto ist aktiviert!",
+      "text": "Melde Dich jetzt an und nutze alle Vorteile unserer digitalen Power Tools Lock Book Docu und Lock Book Draw völlig kostenfrei.",
+      "error": {
+        "title": "Etwas ist schief gelaufen",
+        "text": "Es scheint als wäre deine Aktivierung abgelaufen, hier kannst du dir eine neue Aktivierungsmail zusenden lassen. <br/><br/><2>Klicke hier für eine neue Aktivierungsmail</2>",
+        "additional_text": "Bereits registriert? Dann versuche Dich anzumelden."
+      }
+    },
+    "register": "Registrieren",
+    "step": "Schritt",
+    "login": "Hier anmelden",
+    "completed": "Fast geschafft!",
+    "info_mail": "Wir haben Dir eine E-Mail an <1>{{email}}</1> gesendet.",
+    "info_instructions": "Die E-Mail enthält Deinen <1>Benutzernamen</1> und den <4>Aktivierungslink</4>. Klicke auf den Link, um Dein Lock Book Konto zu aktivieren. Dann kannst Du Dich mit Deinem Benutzernamen und Passwort anmelden.",
+    "info_help": "Der E-Mailversand kann einige Minuten dauern. Keine E-Mail erhalten? Schau in den Spam-Ordner oder <2>melde Dich bei uns</2>.",
+    "company_error": "Diese Firma existiert bereits. Bitte wende Dich an den Admin Deines Unternehmens.",
+    "account_already_registered": "<0><0>Schon länger dabei?<1>Hier anmelden</1></0><1>Nutze Dein bestehendes „ABS-Lock Book“-Konto einfach weiter.<br/>Du musst Dich nicht neu registrieren!</1></0>"
+  },
+  "login": {
+    "login": "Anmelden",
+    "new_user": "Neuer Benutzer?",
+    "register": "Kostenlos registrieren",
+    "forgot_account": "Zugangsdaten vergessen",
+    "forgot_password_hint": "Passwort vergessen? Klicke auf “Zugangsdaten vergessen”."
+  },
+  "forgot_password": {
+    "reset_password": "Passwort zurücksetzen",
+    "info": "Kein Problem! Du kannst Dein Passwort ganz einfach zurücksetzen. \nGib hierzu Deinen Benutzernamen ein. Im Anschluss senden wir Dir eine E-Mail mit einem Link zum Zurücksetzen des Passworts.",
+    "username_info": "vorname.nachname und evtl. mit Zahl am Ende",
+    "check_emails": "Bitte prüfe Deine E-Mails.",
+    "check_emails_info": "In wenigen Minuten erhältst Du eine Nachricht mit Deinem Benutzername und einem Link zum Zurücksetzen Deines Passworts.",
+    "hint": "Hinweis:",
+    "hint_info": "Bitte beachte, dass der Link zum Zurücksetzen Deines Passworts nur 24 Stunden gültig ist.",
+    "forgot_username": {
+      "title": "Benutzernamen vergessen?",
+      "text": "<0>Du findest weder Dein Passwort noch Deinen Benutzernamen? Wir helfen Dir weiter. Nutze einfach unser <2>Formular</2> oder ruf uns an unter <6>+49 2832 97281-130</6>.</0>"
+    }
+  },
+  "new_password": {
+    "insert_password": "Passwort eingeben",
+    "info": "Bitte wähle Dein Passwort. Das Passwort muss mindestens 8 Zeichen lang sein und mindestens einen Klein- und Großbuchstaben sowie mindestens eine Zahl enthalten.",
+    "password_changed": "Passwort geändert!",
+    "password_changed_info": "Super! Du hast Dein Passwort erfolgreich zurückgesetzt. Du kannst Dich ab sofort mit Deinem neuen Passwort anmelden.",
+    "password_saved": "Passwort gespeichert!",
+    "password_saved_info": "Super! Dein Passwort wurde erfolgreich gespeichert. Du kannst Dich ab sofort mit Deinem neuen Passwort anmelden."
+  },
+  "new_account_activation": {
+    "resend_account_activation": "Accountaktivierungsmail erneut erhalten",
+    "info": "Kein Problem! Du kannst Deinen Account ganz einfach aktivieren. \nGib hierzu Deinen Benutzernamen ein den du z.B. mit der letzten abgelaufenen Aktivierungsmail erhalten hast. Im Anschluss senden wir Dir eine E-Mail mit einem Link zum aktivieren deines Accounts.",
+    "username_info": "vorname.nachname und evtl. mit Zahl am Ende",
+    "check_emails": "Bitte prüfe Deine E-Mails.",
+    "check_emails_info": "In wenigen Minuten erhältst Du eine Nachricht mit einem Link zum aktivieren deines Accounts.",
+    "hint": "Hinweis:",
+    "hint_info": "Bitte beachte, dass der Link zum aktivieren deines Accounts nur 24 Stunden gültig ist.",
+    "forgot_username": {
+      "title": "Benutzernamen vergessen?",
+      "text": "<0>Du findest weder Dein Passwort noch Deinen Benutzernamen? Wir helfen Dir weiter. Nutze einfach unser <2>Formular</2> oder ruf uns an unter <6>+49 2832 97281-130</6>.</0>"
+    }
+  },
+  "form": {
+    "name": "Name",
+    "username": "Benutzername",
+    "firstname": "Vorname",
+    "lastname": "Nachname",
+    "phone": "Telefon",
+    "phone1": "Telefon",
+    "phone2": "Handy",
+    "email": "E-Mail",
+    "email_repeat": "E-mail wiederholen",
+    "email_matching": "E-Mail Adressen müssen übereinstimmen",
+    "password": "Passwort",
+    "password_repeat": "Passwort wiederholen",
+    "password_hint": "Das Passwort muss mindestens 8 Zeichen lang sein und mindestens einen Klein- und Großbuchstaben sowie mindestens eine Zahl enthalten.",
+    "password_new": "Neues Passwort",
+    "password_new_enter": "Neues Passwort eingeben",
+    "password_new_repeat": "Neues Passwort wiederholen",
+    "change_password": "Passwort ändern",
+    "password_matching": "Passwörter müssen übereinstimmen",
+    "choose_country": "Land wählen",
+    "choose_industry": "Branche wählen",
+    "choose_job_title": "Tätigkeit im Unternehmen wählen",
+    "company": "Firmenname",
+    "industry": "Branche",
+    "address1": "Straße und Hausnummer",
+    "address2": "Adresszusatz",
+    "postcode": "PLZ",
+    "city": "Ort",
+    "country": "Land",
+    "manager_first_name": "Vorname",
+    "manager_last_name": "Nachname",
+    "display_assembler_information": "Andrucken: Kontaktdaten vom abschließenden Nutzer in der Dokumentation",
+    "placeholder_before": "",
+    "placeholder_after": "eingeben",
+    "back_to_step": "Zurück zu Schritt",
+    "next": "Weiter",
+    "register": "Registrierung abschließen",
+    "cancel": "Abbrechen",
+    "submit": "Speichern",
+    "send": "Senden",
+    "save": "Speichern",
+    "success": "Die Daten wurden erfolgreich gespeichert.",
+    "success_logo": "Logo gespeichert",
+    "deactivate": "Nutzer deaktivieren",
+    "activate": "Nutzer aktivieren",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "terms_accept": "<0>Wenn Du fortfährst, stimmst Du unseren </0><1>Nutzungsbedingungen</1> und unserer <3>Datenschutzerklärung</3><4> zu.</4>",
+    "optional": "(optional)",
+    "choose_from_suggestions": "Aus Vorschlägen auswählen",
+    "job_title": "Tätigkeit im Unternehmen"
+  },
+  "job_title_suggestions": {
+    "architect": "Architekt:in",
+    "planner": "Planer:in",
+    "managing_director": "Geschäftsführer:in",
+    "metal_worker": "Metallbauer:in",
+    "office_worker": "Sachbearbeiter:in",
+    "mechanic": "Monteur:in",
+    "roof": "Dachhandwerk:in",
+    "not_in_list": "Tätigkeit im Unternehmen nicht dabei?"
+  },
+  "industry_suggestions": {
+    "architecture": "Architekturbüro",
+    "engineering": "Ingenieurbüro",
+    "structural": "Statiker",
+    "roofing": "Dachdeckerei",
+    "carpentry": "Zimmerei",
+    "metal_construction": "Metallbau",
+    "interior": "Innenausbau",
+    "renewables": "Erneuerbare Energien",
+    "maintenance": "Wartung und Instandhaltung",
+    "trader": "Baustoffhandel",
+    "manufacturer": "Baustoffherstellung",
+    "climber": "Industrie-/Höhenkletterer",
+    "facility_management": "Facility Management",
+    "not_in_list": "Unternehmensbranche nicht dabei?"
+  },
+  "profile": {
+    "my_account": "Mein Konto",
+    "my_profile": "Mein Profil",
+    "general": "Allgemein",
+    "change_password": "Passwort ändern",
+    "signature": "Unterschrift",
+    "advanced": "Erweitert",
+    "my_company": "Mein Unternehmen",
+    "user_management": {
+      "title": "Nutzerverwaltung",
+      "create_user_feedback": "Der Mitarbeiter wurde erfolgreich angelegt und hat eine E-Mail erhalten. Durch Klicken auf den Aktivierungslink in der E-Mail kann der Mitarbeiter sein Konto aktivieren."
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "description": "Datenschutz und Datensicherheit sind für uns von oberster Priorität. Lies Dir deshalb die folgende Datenschutzerklärung sorgfältig durch.",
+      "link": "Hier kannst Du die aktuellste <1>Datenschutzerklärung einsehen</1>"
+    },
+    "newsletter": {
+      "title": "Interessenbezogene Informationen",
+      "description": "Wir übermitteln Dir von Zeit zu Zeit interessenbezogene Informationen, um Dir Funktionen, Services und Dienstleistungen anzubieten und zu erläutern, die für Dich von Interesse sein könnten.",
+      "newsletter_accept": "Interessenbezogene Informationen von Lock Book erhalten",
+      "newsletter_reject": "Ich möchte keine interessenbezogenen Informationen von Lock Book erhalten"
+    }
+  },
+  "company": {
+    "my_company": "Mein Unternehmen",
+    "add_user": "Nutzer anlegen",
+    "search_user": "Mitarbeiter suchen",
+    "not_found": "Unternehmen nicht gefunden"
+  },
+  "header": {
+    "language": "Sprache"
+  },
+  "footer": {
+    "help": "Hilfe",
+    "imprint_and_privacy": "Impressum & Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  },
+  "roles": {
+    "title": "Rolle",
+    "ROLE_SUPER_ADMIN": "Super Admin",
+    "ROLE_ABS_ADMIN": "ABS Administration",
+    "ROLE_ABS_OFFICE": "ABS Büro",
+    "ROLE_COMPANY_ADMIN": "Administration",
+    "ROLE_COMPANY_OFFICE": "Büro",
+    "ROLE_COMPANY_TECH": "Montage",
+    "ROLE_USER": "Nutzer",
+    "ROLE_ADMIN": "Admin"
+  },
+  "user": {
+    "state": "Status",
+    "active": "aktiv",
+    "deactivated": "deaktiviert",
+    "details": "Nutzer-Details",
+    "not_found": "Benutzer nicht gefunden",
+    "search_not_found": "Keine Ergebnisse gefunden.",
+    "signature_header": "Meine Unterschrift",
+    "signature_advice": "Bitte beachte, dass die Unterschrift nur in der Docu Anwendung und App verwendet wird.",
+    "signature_text_below": "Hinterlege hier Deine Unterschrift, um diese ganz einfach zu nutzen, sobald Du Dokumentationen abschließt.",
+    "signature_submit": "Änderung speichern"
+  },
+  "loading": {
+    "general": "Bitte warten...",
+    "logout": "Du wirst ausgeloggt..."
+  },
+  "services": {
+    "document_title": "Anwendungen",
+    "docu": {
+      "button": "Jetzt dokumentieren",
+      "description": "Erstelle lückenlose Dokumentationen gemäß DGUV. Ein Objekt-Datensatz, immer verfügbar - bei jeder Montage, Überprüfung und Wartung."
+    },
+    "draw": {
+      "button": "Jetzt planen",
+      "description": "Dein professionelles Planungsprogramm, ganz einfach im Browser. Erstelle unkompliziert maßstabsgetreue Dach-Skizzen für Deine Sicherungssysteme."
+    },
+    "more_info": "Mehr Infos",
+    "use": "Welche Anwendung willst Du nutzen?",
+    "welcome": "Hallo {{ firstName }}, willkommen bei Lock Book!"
+  },
+  "error": {
+    "back_to_lock_book": "Zurück zu Lock Book",
+    "error_text": "Vielleicht möchtest Du zurück zu Lock Book. Wenn etwas kaputt ist, kannst Du auch ein Problem melden.",
+    "send_feedback_button": "Problem melden",
+    "403": "Oops, Du hast keine Berechtigung auf diese Seite zuzugreifen.",
+    "404": "Oops, die Seite, nach der Du suchst, existiert nicht.",
+    "500": "Oops, ein technischer Fehler ist aufgetreten."
+  },
+  "legal": {
+    "headline": "Nutzungsbedingungen",
+    "text": "Die <2>Nutzungsbedingungen</2> und <6>Datenschutzbestimmungen</6> wurden aktualisiert. Akzeptiere diese um fortzufahren. Andernfalls wirst Du automatisch abgemeldet.",
+    "accept": "Akzeptieren",
+    "decline": "Abmelden"
+  }
+}

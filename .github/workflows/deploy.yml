@@ -1,0 +1,285 @@
+name: 'Deploy'
+
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - main
+
+env:
+  WEB_REPOSITORY_NAME: iac-lb-auth-web
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+  packages: write
+  
+jobs:
+  project_infrastructure_web:
+    name: 'Project Infrastructure'
+    runs-on: ubuntu-latest
+    env:
+      working-directory: './terraform/project-web'
+      tf_s3_region: 'eu-central-1'
+      tf_s3_bucket: 'lock-book-tfstate'
+      tf_s3_key: 'states/lb/auth-web/tfstate'
+
+    steps:
+      - name: Checkout
+        if: github.ref == 'refs/heads/main'
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+            audience: sts.amazonaws.com
+            aws-region: eu-central-1
+            role-to-assume: ${{ secrets.TERRAFORM_ROLE }}
+
+      - name: Setup Terraform
+        if: github.ref == 'refs/heads/main'
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Format
+        if: github.ref == 'refs/heads/main'
+        id: fmt
+        run: terraform fmt -check
+        working-directory: ${{env.working-directory}}
+
+      - name: Terraform Init
+        if: github.ref == 'refs/heads/main'
+        id: init
+        run: terraform init -input=false -backend-config="region=${{env.tf_s3_region}}" -backend-config="bucket=${{env.tf_s3_bucket}}" -backend-config="key=${{env.tf_s3_key}}"
+        working-directory: ${{env.working-directory}}
+
+      - name: Terraform Validate
+        if: github.ref == 'refs/heads/main'
+        id: validate
+        run: terraform validate -no-color
+        working-directory: ${{env.working-directory}}
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve -var="ecr_repository_name=${{ env.WEB_REPOSITORY_NAME }}" -var="sentry_token=${{ secrets.SENTRY_TOKEN }}"
+        working-directory: ${{env.working-directory}}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    needs:
+      - project_infrastructure_web
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+            audience: sts.amazonaws.com
+            aws-region: eu-central-1
+            role-to-assume: ${{ secrets.TERRAFORM_ROLE }}
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Show branch name
+        run: echo "${{ steps.extract_branch.outputs.branch }}"
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push the image to Amazon ECR (Develop)
+        if: github.ref == 'refs/heads/develop'
+        id: build-dev-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.WEB_REPOSITORY_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          REACT_APP_API_URL: https://api.auth.dev.lock-book.com
+          REACT_APP_DRAW_URL: https://draw.dev.lock-book.com
+          REACT_APP_DOCU_URL: https://docu.dev.lock-book.com
+          REACT_APP_HUB_URL: https://hub.dev.lock-book.com
+          REACT_APP_GOOGLE_TAG_MANAGER_ID: GTM-KKP9PHF
+          REACT_APP_USERCENTRICS_ID: OpRmmWOyL
+          REACT_APP_ENVIRONMENT: dev
+          REACT_APP_SENTRY_DSN: https://3d3024fc69a24c27991bba9fe4b353b1@o269983.ingest.sentry.io/5783310
+          REACT_APP_SENTRY_ENVIRONMENT: dev
+        run: |
+          # Build a docker container and push it to ECR
+          # TODO or: -t $IMAGE_REPO_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION ??
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            --build-arg REACT_APP_API_URL=$REACT_APP_API_URL \
+            --build-arg REACT_APP_DRAW_URL=$REACT_APP_DRAW_URL \
+            --build-arg REACT_APP_DOCU_URL=$REACT_APP_DOCU_URL \
+            --build-arg REACT_APP_HUB_URL=$REACT_APP_HUB_URL \
+            --build-arg REACT_APP_GOOGLE_TAG_MANAGER_ID=$REACT_APP_GOOGLE_TAG_MANAGER_ID \
+            --build-arg REACT_APP_ENVIRONMENT=$REACT_APP_ENVIRONMENT \
+            --build-arg REACT_APP_USERCENTRICS_ID=$REACT_APP_USERCENTRICS_ID \
+            --build-arg REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN \
+            --build-arg REACT_APP_SENTRY_ENVIRONMENT=$REACT_APP_SENTRY_ENVIRONMENT \
+            --build-arg NPM_TOKEN=$NPM_TOKEN \
+          .
+          echo "Pushing image to ECR..."
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPOSITORY
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+      - name: Build, tag, and push the image to Amazon ECR (Staging)
+        if: github.ref == 'refs/heads/staging'
+        id: build-staging-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.WEB_REPOSITORY_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          REACT_APP_API_URL: https://api.auth.staging.lock-book.com
+          REACT_APP_DRAW_URL: https://draw.staging.lock-book.com
+          REACT_APP_DOCU_URL: https://docu.staging.lock-book.com
+          REACT_APP_HUB_URL: https://hub.staging.lock-book.com
+          REACT_APP_GOOGLE_TAG_MANAGER_ID: GTM-KKP9PHF
+          REACT_APP_USERCENTRICS_ID: OpRmmWOyL
+          REACT_APP_ENVIRONMENT: staging
+          REACT_APP_SENTRY_DSN: https://3d3024fc69a24c27991bba9fe4b353b1@o269983.ingest.sentry.io/5783310
+          REACT_APP_SENTRY_ENVIRONMENT: staging
+        run: |
+          # Build a docker container and push it to ECR
+          # TODO or: -t $IMAGE_REPO_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION ??
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            --build-arg REACT_APP_API_URL=$REACT_APP_API_URL \
+            --build-arg REACT_APP_DRAW_URL=$REACT_APP_DRAW_URL \
+            --build-arg REACT_APP_DOCU_URL=$REACT_APP_DOCU_URL \
+            --build-arg REACT_APP_HUB_URL=$REACT_APP_HUB_URL \
+            --build-arg REACT_APP_GOOGLE_TAG_MANAGER_ID=$REACT_APP_GOOGLE_TAG_MANAGER_ID \
+            --build-arg REACT_APP_ENVIRONMENT=$REACT_APP_ENVIRONMENT \
+            --build-arg REACT_APP_USERCENTRICS_ID=$REACT_APP_USERCENTRICS_ID \
+            --build-arg REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN \
+            --build-arg REACT_APP_SENTRY_ENVIRONMENT=$REACT_APP_SENTRY_ENVIRONMENT \
+            --build-arg NPM_TOKEN=$NPM_TOKEN \
+          .
+          echo "Pushing image to ECR..."
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPOSITORY
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+      - name: Build, tag, and push the image to Amazon ECR (Prod)
+        if: github.ref == 'refs/heads/main'
+        id: build-prod-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.WEB_REPOSITORY_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          REACT_APP_API_URL: https://api.auth.lock-book.com
+          REACT_APP_DRAW_URL: https://draw.lock-book.com
+          REACT_APP_DOCU_URL: https://docu.lock-book.com
+          REACT_APP_HUB_URL: https://hub.lock-book.com
+          REACT_APP_GOOGLE_TAG_MANAGER_ID: GTM-KKP9PHF
+          REACT_APP_USERCENTRICS_ID: OpRmmWOyL
+          REACT_APP_ENVIRONMENT: prod
+          REACT_APP_SENTRY_DSN: https://3d3024fc69a24c27991bba9fe4b353b1@o269983.ingest.sentry.io/5783310
+          REACT_APP_SENTRY_ENVIRONMENT: prod
+          REACT_APP_FACEBOOK_VERIFICATION: npw4mramhg3a668ea8s1xohvo7377p
+        run: |
+          # Build a docker container and push it to ECR
+          # TODO or: -t $IMAGE_REPO_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION ??
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            --build-arg REACT_APP_API_URL=$REACT_APP_API_URL \
+            --build-arg REACT_APP_DRAW_URL=$REACT_APP_DRAW_URL \
+            --build-arg REACT_APP_DOCU_URL=$REACT_APP_DOCU_URL \
+            --build-arg REACT_APP_HUB_URL=$REACT_APP_HUB_URL \
+            --build-arg REACT_APP_GOOGLE_TAG_MANAGER_ID=$REACT_APP_GOOGLE_TAG_MANAGER_ID \
+            --build-arg REACT_APP_ENVIRONMENT=$REACT_APP_ENVIRONMENT \
+            --build-arg REACT_APP_USERCENTRICS_ID=$REACT_APP_USERCENTRICS_ID \
+            --build-arg REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN \
+            --build-arg REACT_APP_SENTRY_ENVIRONMENT=$REACT_APP_SENTRY_ENVIRONMENT \
+            --build-arg NPM_TOKEN=$NPM_TOKEN \
+            --build-arg REACT_APP_FACEBOOK_VERIFICATION=$REACT_APP_FACEBOOK_VERIFICATION \
+          .
+          echo "Pushing image to ECR..."
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPOSITORY
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+      - name: Lacework-Scan
+        shell: bash
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ env.WEB_REPOSITORY_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+          LW_ACCESS_TOKEN: ${{ secrets.LW_SCANNER_TOKEN }}
+          LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install curl
+          curl -L https://github.com/lacework/lacework-vulnerability-scanner/releases/latest/download/lw-scanner-linux-amd64 -o lw-scanner
+          chmod +x lw-scanner
+          ./lw-scanner image evaluate $ECR_REGISTRY/$ECR_REPOSITORY $IMAGE_TAG --build-id ${{ github.run_id }} --scan-library-packages --save
+
+  deploy:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+    needs:
+      - build
+
+    env:
+      working-directory: './terraform/environment-web'
+      tf_s3_region: 'eu-central-1'
+      tf_s3_bucket: 'lock-book-tfstate'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+            audience: sts.amazonaws.com
+            aws-region: eu-central-1
+            role-to-assume: ${{ secrets.TERRAFORM_ROLE }}
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Show branch name
+        run: echo "${{ steps.extract_branch.outputs.branch }}"
+
+      - name: Check branch name
+        if: steps.extract_branch.outputs.branch == ''
+        run: exit 1
+
+      - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.TERRAFORM_MODULES }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        working-directory: ${{env.working-directory}}
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false -backend-config="region=${{env.tf_s3_region}}" -backend-config="bucket=${{env.tf_s3_bucket}}" -backend-config="key=states/lb/auth-web/${{ steps.extract_branch.outputs.branch }}/tfstate"
+        working-directory: ${{env.working-directory}}
+
+      - name: Terraform Validate
+        id: validate
+        env:
+          OP_CONNECT_TOKEN: ${{ secrets.ONEPASSWORD_CONNECT_TOKEN }}
+        run: terraform validate -no-color
+        working-directory: ${{env.working-directory}}
+
+      - name: Terraform Apply
+        env:
+          OP_CONNECT_TOKEN: ${{ secrets.ONEPASSWORD_CONNECT_TOKEN }}
+        run: terraform apply -auto-approve -var="branch_name=${{ steps.extract_branch.outputs.branch }}" -var="commit_hash=${{ github.sha }}" -var="ecr_repository_name=${{ env.WEB_REPOSITORY_NAME }}" -var="lacework_access_token=${{ secrets.LW_ACCESS_TOKEN }}"
+        working-directory: ${{env.working-directory}}

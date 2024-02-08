@@ -1,0 +1,36 @@
+name: Cypress Tests
+
+on: [push]
+
+env:
+  HTTPS: 'true'
+  PORT: '8000'
+  REACT_APP_ENVIRONMENT: 'local'
+  REACT_APP_HUB_URL: 'https://localhost:8000'
+  REACT_APP_API_URL: 'https://api.hub.lock-book.local'
+  # To prevent third party script errors.
+  REACT_APP_GOOGLE_TAG_MANAGER_ID: 'gtm_id'
+  REACT_APP_USER_CENTRICS_ID: 'uc_id'
+
+jobs:
+  cypress:
+    name: Cypress
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
+
+      - name: Upload videos
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos

@@ -1,0 +1,7 @@
+{
+  "data": {
+    "id": 1,
+    "username": "abs.admin",
+    "roles": ["ROLE_SUPER_ADMIN"]
+  }
+}

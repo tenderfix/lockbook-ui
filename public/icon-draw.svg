@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57" height="57" viewBox="0 0 57 57">
+  <defs>
+    <filter id="Pfad_1520" x="0" y="0" width="57" height="57" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.302"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <path id="Pfad_1522" data-name="Pfad 1522" d="M32.684,22.275c-.424,0-10.41.131-10.41,10.4v23.66c0,.424.139,10.4,10.41,10.4H56.342c.424,0,10.4-.131,10.4-10.4V32.676c.008-.424-.139-10.4-10.4-10.4Z" transform="translate(-22.274 -22.275)" fill="#fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#202020"/>
+      <stop offset="1" stop-color="#3a3939"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#222221"/>
+      <stop offset="1" stop-color="#3a3939"/>
+    </linearGradient>
+  </defs>
+  <g id="Icon" transform="translate(-181.5 -625.5)">
+    <g id="Gruppe_3334" data-name="Gruppe 3334" transform="translate(186 629)">
+      <g transform="matrix(1, 0, 0, 1, -4.5, -3.5)" filter="url(#Pfad_1520)">
+        <path id="Pfad_1520-2" data-name="Pfad 1520" d="M36.211,48H11.789C.177,48,0,36.716,0,36.211V11.79C0,.177,11.284,0,11.789,0H36.211C47.806,0,48,11.284,48,11.79V36.211C48,47.84,36.7,48,36.211,48Z" transform="translate(4.5 3.5)" fill="#f5f5f5"/>
+      </g>
+      <g id="Gruppe_2017" data-name="Gruppe 2017" transform="translate(1.761 1.761)">
+        <g id="Gruppe_2016" data-name="Gruppe 2016" clip-path="url(#clip-path)">
+          <path id="Pfad_1524" data-name="Pfad 1524" d="M0,0H38.589V46.506H0Z" transform="translate(-1.014 -1.012)" fill="none"/>
+        </g>
+      </g>
+    </g>
+    <g id="Ebene_4" data-name="Ebene 4" transform="translate(200.3 630.8)">
+      <g id="Gruppe_3343" data-name="Gruppe 3343">
+        <g id="Gruppe_3342" data-name="Gruppe 3342" transform="translate(0 7.555)">
+          <path id="Pfad_1726" data-name="Pfad 1726" d="M319.232,207.477h-1.267v-.686a4.211,4.211,0,0,1-.659-.56,4.114,4.114,0,0,1-1.229-3.024,4.244,4.244,0,0,1,1.214-3.049c0-.009,0-.009.015-.009a4.1,4.1,0,0,1,3-1.23,4.038,4.038,0,0,1,2.977,1.23l.016.009a4.182,4.182,0,0,1,1.238,3.049,4.1,4.1,0,0,1-1.238,3.024h-.016a4.166,4.166,0,0,1-.657.56v.686h-1.244v12.634l8.643-16.9-3.613-19.946H314.23l-3.641,19.946,8.643,16.9Z" transform="translate(-310.589 -183.267)" fill="url(#linear-gradient)"/>
+          <path id="Pfad_1727" data-name="Pfad 1727" d="M466.058,552.893a2.4,2.4,0,0,0,1.176-.635,2.189,2.189,0,0,0,.671-1.619,2.219,2.219,0,0,0-.671-1.634h0a2.2,2.2,0,0,0-1.609-.665,2.235,2.235,0,0,0-1.619.647.016.016,0,0,1-.014.018h0a2.3,2.3,0,0,0-.634,1.634,2.2,2.2,0,0,0,.653,1.619,2.267,2.267,0,0,0,1.175.644l-.027-.009a2.642,2.642,0,0,0,.471.037A2.231,2.231,0,0,0,466.058,552.893Z" transform="translate(-455.908 -530.513)" fill="url(#linear-gradient-2)"/>
+        </g>
+        <path id="Pfad_1728" data-name="Pfad 1728" d="M386,22.11v5.86h12.391V22.11Z" transform="translate(-382.467 -22.11)" fill="#0f8c77"/>
+      </g>
+    </g>
+  </g>
+</svg>

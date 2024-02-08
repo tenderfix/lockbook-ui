@@ -1,0 +1,32 @@
+{
+  "imageUrl": null,
+  "id": 1,
+  "username": "abs.admin",
+  "email": "abs.admin@email.de",
+  "roles": ["ROLE_SUPER_ADMIN"],
+  "enabled": true,
+  "salutation": null,
+  "firstName": "ABS",
+  "lastName": "Admin",
+  "address1": null,
+  "address2": null,
+  "postcode": null,
+  "city": null,
+  "country": null,
+  "phone1": "34567876543",
+  "phone2": null,
+  "fax": null,
+  "signature": null,
+  "acceptedTermsOfService": true,
+  "acceptedTermsOfServiceDate": "2020-03-24T16:50:50+01:00",
+  "acceptedAbsSafetyNewsletter": null,
+  "acceptedLockBookNewsletter": false,
+  "receivedStartupInformation": true,
+  "canUseDraw": true,
+  "createdAt": "2020-02-27T16:18:55+01:00",
+  "company": {
+    "id": 1,
+    "name": "ABS Safety GmbH",
+    "canUseDraw": true
+  }
+}

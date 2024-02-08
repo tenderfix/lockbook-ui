@@ -1,0 +1,238 @@
+{
+  "register": {
+    "activation": {
+      "title": "Your account is activated!",
+      "text": "Register now and use all the advantages of our digital power tools Lock Book Docu and Lock Book Draw completely free of charge.",
+      "error": {
+        "title": "Something went wrong",
+        "text": "It seems that your activation has expired, here you can get a new activation email. <br/><br/><2>Click here for a new activation email</2>",
+        "additional_text": "Already registered? Try to login."
+      }
+    },
+    "register": "Signup",
+    "step": "Step",
+    "login": "Login",
+    "completed": "Almost done!",
+    "info_mail": "We have sent an email to <1>{{email}}</1>.",
+    "info_instructions": "The email contains your <1>username</1> and the <4>activation link</4>. Click on the link to activate your Lock Book account. You can then log in with your username and password.",
+    "info_help": "Sending the email can take a few minutes. Didn't receive an email? Check the spam folder or <2>contact us</2>.",
+    "company_error": "This company already exists. Please contact the admin of your company.",
+    "account_already_registered": "<0><0>Been around for a while?<1>Login</1></0><1>Just keep using your existing 'ABS-Lock Book' account.<br/>You do not need to register again!</1></0>"
+  },
+  "login": {
+    "login": "Login",
+    "new_user": "New User?",
+    "register": "Signup for free",
+    "forgot_account": "Forgot your login",
+    "forgot_password_hint": "Forgot your password? Select “Forgot your login” to reset your password."
+  },
+  "forgot_password": {
+    "reset_password": "Reset password",
+    "info": "No problem! You can easily reset your password. \nEnter your username for this. We will then send you an email with a link to reset your password.",
+    "username_info": "firstname.lastname and possibly with a number at the end",
+    "check_emails": "Please check your emails.",
+    "check_emails_info": "In a few minutes you will receive a message with your username and a link to reset your password.",
+    "hint": "Hint:",
+    "hint_info": "Please note that the link to reset your password is only valid for 24 hours.",
+    "forgot_username": {
+      "title": "Forgot username?",
+      "text": "<0>Can't find your password or username? We will help you. Just use our <2>form</2> or call us at <6>+49 2832 97281-130</6>.</0>"
+    }
+  },
+  "new_password": {
+    "insert_password": "Enter password",
+    "info": "Please choose your password. The password must be at least 8 characters long, including one lower and upper case letter and one number.",
+    "password_changed": "Password changed!",
+    "password_changed_info": "Excellent! You have successfully reset your password. You can now log in with your new password.",
+    "password_saved": "Password saved!",
+    "password_saved_info": "Excellent! Your password has been saved successfully. You can now log in with your new password."
+  },
+  "new_account_activation": {
+    "resend_account_activation": "Resend Accountactivationmail",
+    "info": "No problem! You can easily get a new activation email. \nEnter your username for this, you can grab it from the last activationmail you received. We will then send you an email with a link to activate your account.",
+    "username_info": "firstname.lastname and possibly with a number at the end",
+    "check_emails": "Please check your emails.",
+    "check_emails_info": "In a few minutes you will receive a message with a link to activate your account.",
+    "hint": "Hint:",
+    "hint_info": "Please note that the link to activate your account is only valid for 24 hours.",
+    "forgot_username": {
+      "title": "Forgot username?",
+      "text": "<0>Can't find your password or username? We will help you. Just use our <2>form</2> or call us at <6>+49 2832 97281-130</6>.</0>"
+    }
+  },
+  "form": {
+    "name": "Name",
+    "username": "Username",
+    "firstname": "First name",
+    "lastname": "Last name",
+    "phone": "Phone",
+    "phone1": "Phone",
+    "phone2": "Mobilephone",
+    "email": "E-mail",
+    "email_repeat": "Repeat E-mail",
+    "email_matching": "E-Mail must match",
+    "password": "Password",
+    "password_repeat": "Repeat Password",
+    "password_hint": "The password must be at least 8 characters long, including one lower and upper case letter and one number",
+    "password_new": "New Password",
+    "password_new_enter": "Enter new Password",
+    "password_new_repeat": "Repeat new Password",
+    "change_password": "Change Password",
+    "password_matching": "Passwords must match",
+    "choose_country": "Choose country",
+    "choose_industry": "Choose industry",
+    "choose_job_title": "Choose function in the company",
+    "company": "Company name",
+    "industry": "Industry",
+    "address1": "Street and house number",
+    "address2": "Additional address",
+    "postcode": "Postcode",
+    "city": "City",
+    "country": "Country",
+    "manager_first_name": "Firstname",
+    "manager_last_name": "Lastname",
+    "display_assembler_information": "Print: contact details of the final user in the documentation",
+    "placeholder_before": "Enter",
+    "placeholder_after": "",
+    "back_to_step": "Back to step",
+    "next": "Next",
+    "register": "Complete registration",
+    "cancel": "Cancel",
+    "submit": "Save",
+    "send": "Send",
+    "save": "Save",
+    "success": "The data was saved successfully.",
+    "success_logo": "Logo saved",
+    "deactivate": "Disable user",
+    "activate": "Enable user",
+    "edit": "Edit",
+    "delete": "Delete",
+    "terms_accept": "<0>If you continue, you agree to our </0><1>Terms of Use</1> and <3>Privacy Policy</3><4>.</4>",
+    "optional": "(optional)",
+    "choose_from_suggestions": "Choose from suggestions",
+    "job_title": "Function in the company"
+  },
+  "job_title_suggestions": {
+    "architect": "Architect",
+    "planner": "Planner",
+    "managing_director": "Managing director",
+    "metal_worker": "Metal worker",
+    "office_worker": "Office worker",
+    "mechanic": "Mechanic",
+    "roof": "Roofer",
+    "not_in_list": "Function not listed?"
+  },
+  "industry_suggestions": {
+    "architecture": "Architecture office",
+    "engineering": "Engineering office",
+    "structural": "Structural engineer",
+    "roofing": "Roofing company",
+    "carpentry": "Carpentry",
+    "metal_construction": "Metal construction",
+    "interior": "Interior",
+    "renewables": "Renewables",
+    "maintenance": "Service and maintenance",
+    "trader": "Building materials trader",
+    "manufacturer": "Building materials manufacturer",
+    "climber": "Industrial climber / Rope access",
+    "facility_management": "Facility management",
+    "not_in_list": "Industry not listed?"
+  },
+  "profile": {
+    "my_account": "My Account",
+    "my_profile": "My Profile",
+    "general": "General",
+    "change_password": "Change Password",
+    "signature": "Signature",
+    "advanced": "Advanced",
+    "my_company": "My Company",
+    "user_management": {
+      "title": "User Management",
+      "create_user_feedback": "The user was successfully created and has received an email. By clicking the activation link in the email the user can activate his account."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Data protection and data security are of the highest priority for us. Therefore, read the following privacy policy carefully.",
+      "link": "Here you can <1>view the latest privacy policy</1>"
+    },
+    "newsletter": {
+      "title": "Interest related information",
+      "description": "We may, from time to time, provide you with interest-related information to offer and explain features, services and benefits that may be of interest to you.",
+      "newsletter_accept": "Receive interest-related information from Lock Book",
+      "newsletter_reject": "I do not wish to receive interest-related information from Lock Book"
+    }
+  },
+  "company": {
+    "my_company": "My Company",
+    "add_user": "Create user",
+    "search_user": "Search employees",
+    "not_found": "Company not found"
+  },
+  "header": {
+    "language": "Language"
+  },
+  "footer": {
+    "help": "Help",
+    "imprint_and_privacy": "Legal Disclosure & Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "roles": {
+    "title": "Role",
+    "ROLE_SUPER_ADMIN": "Super Admin",
+    "ROLE_ABS_ADMIN": "ABS Administration",
+    "ROLE_ABS_OFFICE": "ABS Office",
+    "ROLE_COMPANY_ADMIN": "Administration",
+    "ROLE_COMPANY_OFFICE": "Office",
+    "ROLE_COMPANY_TECH": "Assembly",
+    "ROLE_USER": "User",
+    "ROLE_ADMIN": "Admin"
+  },
+  "user": {
+    "state": "Status",
+    "active": "active",
+    "deactivated": "deactivated",
+    "details": "User details",
+    "not_found": "User not found",
+    "search_not_found": "No results found.",
+    "signature_header": "My signature",
+    "signature_advice": "Please note that the signature is only used in the Docu application and app.",
+    "signature_text_below": "Deposit your signature here to easily use it as soon as you complete documentations.",
+    "signature_submit": "Save changes"
+  },
+  "loading": {
+    "general": "Please wait...",
+    "logout": "You will be logged out..."
+  },
+  "services": {
+    "document_title": "Applications",
+    "docu": {
+      "button": "Start documentation",
+      "description": "Create complete documentation in accordance with DGUV. One object data record, always available - for every assembly, inspection and maintenance."
+    },
+    "draw": {
+      "button": "Start planning",
+      "description": "Your professional planning program, easy to use in your browser. Easily create true-to-scale roof sketches for your security systems."
+    },
+    "gaeb": {
+      "button": "Upload",
+      "description": "Upload a GAEB file containing your tender and receive a quotation response within a day for a quick and easy way to kick-start your procurement."
+    },
+    "more_info": "More information",
+    "use": "Which application do you want to use?",
+    "welcome": "Hello {{ firstName }}, welcome to Lock Book!"
+  },
+  "error": {
+    "back_to_lock_book": "Back to Lock Book",
+    "error_text": "You may want to go back to Lock Book. If something is broken, you can also report a problem.",
+    "send_feedback_button": "Report a problem",
+    "403": "Oops, you don't have permission to access this page.",
+    "404": "Oops, the page you are looking for does not exist.",
+    "500": "Oops, a technical error has occurred."
+  },
+  "legal": {
+    "headline": "Terms of use",
+    "text": "The <2>terms of use</2> and <6>privacy policy</6> have been updated. Agree with these terms to continue otherwise you will be automatically logged out.",
+    "accept": "Agree",
+    "decline": "Logout"
+  }
+}
