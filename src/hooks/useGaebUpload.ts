@@ -21,6 +21,9 @@ export const useGaebUpload = () => {
 
   const handleSubmit = async (file: File) => {
     const formData = new FormData();
+    /*
+
+    */
     formData.append('tfx_id', '1');
     formData.append('file', file);
     setFile(file);

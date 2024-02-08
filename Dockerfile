@@ -16,9 +16,7 @@ ARG REACT_APP_FACEBOOK_VERIFICATION
 
 WORKDIR /usr/src/app
 
-COPY package.json package-lock.json .nvmrc .npmrc ./
-
-RUN nvm use
+COPY package.json package-lock.json .npmrc ./
 
 RUN npm ci
 
