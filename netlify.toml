@@ -1,2 +1,2 @@
 [build.environment]
-  NPM_CONFIG_USERCONFIG = ".npmrc"
+  NPM_CONFIG_USERCONFIG = "./netlify/.npmrc"
