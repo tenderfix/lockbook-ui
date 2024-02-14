@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "echo $NETLIFY_NPM_TOKEN && react-scripts build",
+    "build": "cp .env.dist .env && npm install && react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!(@abs-safety/lock-book-web-ui)/)\"",
     "cypress": "cypress open",
     "lint": "eslint . --ext .ts,.tsx",
