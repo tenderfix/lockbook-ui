@@ -1,2 +1,2 @@
-[[plugins]]
-  package = "./build-plugin"
+[build.environment]
+  NPM_CONFIG_USERCONFIG = ".npmrc"
