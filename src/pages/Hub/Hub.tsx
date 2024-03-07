@@ -40,12 +40,27 @@ const S = {
 const Hub: FunctionComponent = () => {
   const { t } = useTranslation();
   useDocumentTitle(t('services.document_title'));
-  const { UPLOAD_STATES, handleSubmit, onClose, file, status, hideToast } = useGaebUpload();
+  const { UPLOAD_STATES, invalidFormat, handleSubmit, onClose, file, status, hideToast } =
+    useGaebUpload();
 
   return (
     <S.Hub>
       <S.Headline>{t('services.welcome', { firstName: sessionStore.user?.firstName })}</S.Headline>
       <S.SubHeadline>{t('services.use')}</S.SubHeadline>
+      {!hideToast && invalidFormat && (
+        <Toast
+          color="decline"
+          title={'Error'}
+          description={`Error uploading File:${file?.name}
+          Invalid format!
+          Allowed formats : (".d83 .p83 .x83 .D83 .P83 .X83")
+          `}
+          onCloseClick={onClose}
+          onFadedOut={() => {
+            console.log('closed');
+          }}
+        />
+      )}
       {!hideToast && status === UPLOAD_STATES.UPLOADING && (
         <Toast
           color="black"

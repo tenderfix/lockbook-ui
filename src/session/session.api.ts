@@ -4,7 +4,7 @@ import { IUserWrite, IUserRead } from '../entities/User';
 
 class SessionApi {
   getConstraints() {
-    return;
+    // return;
     return fetchNormal<IConstraintRead>('GET', `/constraints`);
   }
 
@@ -13,7 +13,7 @@ class SessionApi {
   }
 
   loadUser() {
-    return;
+    // return;
     return fetchNormal<IUserRead>('GET', `/user`);
   }
 

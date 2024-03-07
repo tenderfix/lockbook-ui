@@ -213,6 +213,10 @@
       "button": "Jetzt planen",
       "description": "Dein professionelles Planungsprogramm, ganz einfach im Browser. Erstelle unkompliziert maßstabsgetreue Dach-Skizzen für Deine Sicherungssysteme."
     },
+    "gaeb": {
+      "button": "Upload",
+      "description": "Laden Sie eine GAEB-Datei mit Ihrer Anfrage hier hoch und Sie erhalten innerhalb eines Werktages ein Angebot! So können Sie Ihr Projekt schnell und einfach starten."
+    },
     "more_info": "Mehr Infos",
     "use": "Welche Anwendung willst Du nutzen?",
     "welcome": "Hallo {{ firstName }}, willkommen bei Lock Book!"

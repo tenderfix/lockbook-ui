@@ -11,13 +11,13 @@ interface PrivateRouteProps extends RouteProps {
 const PrivateRoute: FunctionComponent<PrivateRouteProps> = (props: PrivateRouteProps) => {
   const { pathname, search } = useLocation();
 
-  // if (sessionStore.isLoggedIn === false && sessionStore.isInitialized === true) {
-  //   return <Redirect to={{ pathname: '/login', search: search }} />;
-  // }
+  if (sessionStore.isLoggedIn === false && sessionStore.isInitialized === true) {
+    return <Redirect to={{ pathname: '/login', search: search }} />;
+  }
 
-  // if (sessionStore.hasAcceptedLegal === false && pathname !== '/legal') {
-  //   return <Redirect to={{ pathname: '/legal', search: search }} />;
-  // }
+  if (sessionStore.hasAcceptedLegal === false && pathname !== '/legal') {
+    return <Redirect to={{ pathname: '/legal', search: search }} />;
+  }
 
   return <Route path={props.path} render={(routeProps) => <props.component {...routeProps} />} />;
 };

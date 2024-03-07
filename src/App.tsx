@@ -31,15 +31,15 @@ import { useReferrer } from './hooks/useReferrer';
 import ResendAccountActivation from './pages/ResendAccountActivation/ResendAccountActivation';
 
 const App: FunctionComponent = () => {
-  // useLocale();
-  // useUser();
+  useLocale();
+  useUser();
   useReferrer();
   const { t } = useTranslation();
 
   const renderRoutes = () => {
-    // if (sessionStore.isInitialized === false && window.location.pathname !== '/login') {
-    //   return <LoadingPage text={t('loading.general')} />;
-    // }
+    if (sessionStore.isInitialized === false && window.location.pathname !== '/login') {
+      return <LoadingPage text={t('loading.general')} />;
+    }
 
     return (
       <Switch>
