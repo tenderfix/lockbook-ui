@@ -10,6 +10,7 @@ import { sessionStore } from '../../session/session.store';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import IconGaeb from '../../assets/IconGaeb';
 import { useGaebUpload } from '../../hooks/useGaebUpload';
+import './Hub.css';
 
 // Styled Components
 const S = {
@@ -55,6 +56,7 @@ const Hub: FunctionComponent = () => {
           Invalid format!
           Allowed formats : (".d83 .p83 .x83 .D83 .P83 .X83")
           `}
+          className="toast-z-index"
           onCloseClick={onClose}
           onFadedOut={() => {
             console.log('closed');
@@ -65,6 +67,7 @@ const Hub: FunctionComponent = () => {
         <Toast
           color="black"
           title={'Uploading'}
+          className="toast-z-index"
           description={`Uploading File:${file?.name}`}
           onCloseClick={onClose}
           onFadedOut={() => {
@@ -76,6 +79,7 @@ const Hub: FunctionComponent = () => {
         <Toast
           color="primary"
           title={'Uploaded'}
+          className="toast-z-index"
           description={`${file?.name} uploaded successfully`}
           onCloseClick={onClose}
           onFadedOut={() => {
@@ -87,6 +91,7 @@ const Hub: FunctionComponent = () => {
         <Toast
           color="decline"
           title={'Error'}
+          className="toast-z-index"
           description={`Error in uploading ${file?.name}`}
           onCloseClick={onClose}
           onFadedOut={() => {
@@ -120,13 +125,13 @@ const Hub: FunctionComponent = () => {
         <HubCard
           title="GAEB"
           description={t('services.gaeb.description')}
-          readMore={'https://info.lock-book.com/docu'}
+          readMore={undefined}
           imageSrc="/hub-gaeb.png"
           icon={<IconGaeb width={48} height={48} />}
           desktop={true}
           mobile={false}
           buttonText={t('services.gaeb.button')}
-          buttonUrl={process.env.REACT_APP_DOCU_URL ?? ''}
+          buttonUrl={'javascript:void(0);'}
           handleSubmit={handleSubmit}
           disabled={status === UPLOAD_STATES.UPLOADING}
         />

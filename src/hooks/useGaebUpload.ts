@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { accountApi } from '../pages/Account/api/account.api';
 import { sessionStore } from '../session/session.store';
 import { ICompanyRead } from '../entities/Company';
@@ -24,6 +24,7 @@ export const useGaebUpload = () => {
   const [file, setFile] = useState<File | undefined>(undefined);
   const [companyInfo, setCompanyInfo] = useState<null | ICompanyRead>(null);
   const [invalidFormat, setInvalidFormat] = useState<boolean>(false);
+  const [featureEnabled, setFeatureEnabled] = useState<boolean>(true);
   const allowedFormats = ['d83', 'p83', 'x83', 'D83', 'P83', 'X83'];
 
   const handleSubmit = async (file: File) => {
@@ -49,7 +50,7 @@ export const useGaebUpload = () => {
         companyInformation = null;
       }
     //Change to TFX_ID to "1" after testing
-    formData.append('tfx_id', '4');
+    formData.append('tfx_id', '1');
     formData.append('file', file);
     formData.append('company_name', sessionStore?.user?.company?.name ?? '');
     formData.append(
@@ -70,7 +71,7 @@ export const useGaebUpload = () => {
 
     try {
       const response = await fetch(
-        'https://vqf9tzwry7.execute-api.eu-central-1.amazonaws.com/test',
+        'https://vqf9tzwry7.execute-api.eu-central-1.amazonaws.com/GAEB_to_mail_wrapper',
         {
           method: 'POST',
           body: formData,
@@ -98,6 +99,28 @@ export const useGaebUpload = () => {
     setInvalidFormat(false);
   };
 
+  const checkIfFeatureEnabled = async () => {
+    const featureId = 'tenderfix_gaeb_upload';
+    const environmentId = process.env.REACT_APP_ENVIRONMENT;
+    try {
+      const res = await fetch(
+        `https://api.configcat.com/v1/environments/${environmentId}/settings/${featureId}/value`,
+        {
+          headers: {
+            'x-api-key': 'UxbbCE0xjEmBoODBkwE1iw/h0VVSM7juE6ZsGBJeVaimQ',
+          },
+        }
+      );
+      setFeatureEnabled(res?.value);
+    } catch (e) {
+      console.log('ConfigCat request failed');
+    }
+  };
+
+  useEffect(() => {
+    // checkIfFeatureEnabled();
+  }, []);
+
   return {
     status,
     setStatus,
@@ -107,5 +130,6 @@ export const useGaebUpload = () => {
     handleSubmit,
     invalidFormat,
     UPLOAD_STATES,
+    featureEnabled,
   };
 };
